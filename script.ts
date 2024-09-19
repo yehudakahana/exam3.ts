@@ -14,6 +14,24 @@ interface players {
     playerName?: string;
 
 }
+
+//תצוגת המספר הנבחר באינפוטים
+document.getElementById("points")!.addEventListener("input", (event) => {
+    const value = (event.target as HTMLInputElement).value;
+    (document.getElementById("labelPoints") as HTMLInputElement).textContent = value;
+})
+
+document.getElementById("twoPercent")!.addEventListener("input", (event) => {
+    const value = (event.target as HTMLInputElement).value;
+    (document.getElementById("labelTwo") as HTMLInputElement).textContent = value;
+});
+
+document.getElementById("threePercent")!.addEventListener("input", (event) => {
+    const value = (event.target as HTMLInputElement).value;
+    (document.getElementById("labelThree") as HTMLInputElement).textContent = value;
+
+});
+
  
  //כפתור החיפוש
  form.addEventListener("submit", async(event) => {
@@ -29,6 +47,10 @@ interface players {
 })
 
 
+
+
+
+//תצוגה לטבלה
 async function displayTable(listOfPlayers:players[]): Promise<void> {
         const tbody = document.getElementById('tbody') as HTMLTableElement;
          tbody.innerHTML = '';

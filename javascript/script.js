@@ -13,6 +13,19 @@ const display = document.getElementById("section-display");
 const form = document.getElementById("section-form");
 const table = document.getElementById("scooters-table");
 let listOfPlayers;
+//תצוגת המספר הנבחר באינפוטים
+document.getElementById("points").addEventListener("input", (event) => {
+    const value = event.target.value;
+    document.getElementById("labelPoints").textContent = value;
+});
+document.getElementById("twoPercent").addEventListener("input", (event) => {
+    const value = event.target.value;
+    document.getElementById("labelTwo").textContent = value;
+});
+document.getElementById("threePercent").addEventListener("input", (event) => {
+    const value = event.target.value;
+    document.getElementById("labelThree").textContent = value;
+});
 //כפתור החיפוש
 form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
     event.preventDefault();
@@ -25,6 +38,7 @@ form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, fun
     listOfPlayers = yield searchPlayers(newSearch);
     displayTable(listOfPlayers);
 }));
+//תצוגה לטבלה
 function displayTable(listOfPlayers) {
     return __awaiter(this, void 0, void 0, function* () {
         const tbody = document.getElementById('tbody');

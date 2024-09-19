@@ -8,11 +8,83 @@
 </head>
 <body>
     <header>
-        <h2>NBA Fantasy 2014-2024</h2>
+        <h3>NBA Fantasy 2014-2024</h3>
+    </header>
+    <main>
+        <section id="section-display">
+            <h2>My Fantasy Team</h2>
+            <div id="PG">div 1</div>
+            <div id="SG">div 2</div>
+            <div id="SF">div 3</div>
+            <div id="PF">div 4</div>
+            <div id="C">div 5</div>
+        </section>
+
+        <section id="section-form">
+            <h2>NBA Player Search</h2>
+            <form id="search-form">
+                <select id="position" required>
+                    <option value="PG">PG</option>
+                    <option value="SG">SG</option>
+                    <option value="SF">SF</option>
+                    <option value="PF">PF</option>
+                    <option value="C">C</option>
+                </select>
+                <label for="points" id="labelPoints">Points:</label>
+                <input type="range" min="0" max="100" value="1" id="points" required>
+                <label for="twoPercent" id="labelTwo">FG%:</label>
+                <input type="range" min="0" max="20000" value="1" id="twoPercent" required>
+                <label for="threePercent" id="labelThree">3P%:</label>
+                <input type="range" min="0" max="100" value="1" id="threePercent" required>
+                <button type="submit" id="search-button">Search Player</button>
+            </form>
+        </section>
+
+        <section id="section-table">
+            <table id="scooters-table">
+                <thead> 
+                    <tr>
+                        <th>Player</th>
+                        <th>Position</th>
+                        <th>Points</th>
+                        <th>FG%</th>
+                        <th>3P%</th>
+                        <th>Action</th> 
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fansazy</title>
+</head>
+<body>
+    <header>
+        <h3>NBA Fantasy 2014-2024</h3>
     </header>
     <main>
     <section id="section-display">
-        <h2>mt Fantasy team</h2>
+        <h2>My Fantasy Team</h2>
         <div id="PG">div 1</div>
         <div id="SG">div 2</div>
         <div id="SF">div 3</div>
@@ -22,7 +94,7 @@
     </section>
 
     <section id="section-form">
-        <h2>NBA Player Swarch</h2>
+        <h2>NBA Player Search</h2>
         <form >
             <select  id="position" required>
                 <option value="PG">PG</option>
@@ -32,9 +104,13 @@
                 <option value="C">C</option>
 
             </select >
+            <label for="points" id="lablePoints"></label>
             <input type="range" min="0" max="100" value="1" id="points" required>
+            <label for="twoPercent" id="labelTwo"></label>
             <input type="range" min="0" max="20000" value="1" id="twoPercent" required>
+            <label for="threePercent" id="labelThree"></label>
             <input type="range" min="0" max="100" value="1" id="threePercent" required>
+
 
             <button type="submit">Search Player</button>
 
@@ -67,4 +143,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+</html> -->
