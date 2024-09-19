@@ -45,17 +45,24 @@ function displayTable(listOfPlayers) {
         tbody.innerHTML = '';
         listOfPlayers.forEach((player, index) => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${player.playerName}</td>
-                <td>${player.position}</td>
-                <td>${player.points}</td>
-                <td>${player.twoPercent}</td>
-                <td>${player.threePercent}</td>
-
-                <td class="actions">
-                    <button onclick="addPlayer(${index})">add ${player.playerName} to Current Team</button>
-                </td>
-            `;
+            // פונקציה  ליצירת תאים
+            const createCell = (text) => {
+                const cell = document.createElement('td');
+                cell.textContent = text.toString();
+                return cell;
+            };
+            row.appendChild(createCell(player.playerName));
+            row.appendChild(createCell(player.position));
+            row.appendChild(createCell(player.points));
+            row.appendChild(createCell(player.twoPercent));
+            row.appendChild(createCell(player.threePercent));
+            const actionCell = document.createElement('td');
+            actionCell.className = 'actions';
+            const button = document.createElement('button');
+            button.textContent = `add ${player.playerName} to Current Team`;
+            button.onclick = () => addPlayer(index);
+            actionCell.appendChild(button);
+            row.appendChild(actionCell);
             tbody.appendChild(row);
         });
     });
@@ -93,3 +100,21 @@ function searchPlayers(newSearch) {
         return rez;
     });
 }
+// async function displayTable(listOfPlayers:players[]): Promise<void> {
+//         const tbody = document.getElementById('tbody') as HTMLTableElement;
+//          tbody.innerHTML = '';
+//         listOfPlayers.forEach((player, index) => {
+//             const row = document.createElement('tr');
+//             row.innerHTML = `
+//                 <td>${player.playerName}</td>
+//                 <td>${player.position}</td>
+//                 <td>${player.points}</td>
+//                 <td>${player.twoPercent}</td>
+//                 <td>${player.threePercent}</td>
+//                 <td class="actions">
+//                     <button onclick="addPlayer(${index})">add ${player.playerName} to Current Team</button>
+//                 </td>
+//             `;
+//             tbody.appendChild(row);
+//         });
+//     }

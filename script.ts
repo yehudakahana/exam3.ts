@@ -49,27 +49,42 @@ document.getElementById("threePercent")!.addEventListener("input", (event) => {
 
 
 //תצוגה לטבלה
-async function displayTable(listOfPlayers:players[]): Promise<void> {
-        const tbody = document.getElementById('tbody') as HTMLTableElement;
-         tbody.innerHTML = '';
-        listOfPlayers.forEach((player, index) => {
-            const row = document.createElement('tr');
-            
-            row.innerHTML = `
-                <td>${player.playerName}</td>
-                <td>${player.position}</td>
-                <td>${player.points}</td>
-                <td>${player.twoPercent}</td>
-                <td>${player.threePercent}</td>
+async function displayTable(listOfPlayers: players[]): Promise<void> {
+    const tbody = document.getElementById('tbody') as HTMLTableElement;
+    tbody.innerHTML = '';
 
-                <td class="actions">
-                    <button onclick="addPlayer(${index})">add ${player.playerName} to Current Team</button>
-                </td>
-            `;
-            tbody.appendChild(row);
-        });
-    }
-    
+    listOfPlayers.forEach((player, index) => {
+        const row = document.createElement('tr');
+
+        // פונקציה  ליצירת תאים
+        const createCell = (text: string | number) => {
+            const cell = document.createElement('td');
+            cell.textContent = text.toString();
+            return cell;
+        };
+
+        row.appendChild(createCell(player.playerName!));
+        row.appendChild(createCell(player.position));
+        row.appendChild(createCell(player.points));
+        row.appendChild(createCell(player.twoPercent));
+        row.appendChild(createCell(player.threePercent));
+
+        const actionCell = document.createElement('td');
+        actionCell.className = 'actions';
+
+        const button = document.createElement('button');
+        button.textContent =`add ${player.playerName} to Current Team`;
+        button.onclick = () => addPlayer(index);  
+
+        actionCell.appendChild(button);
+        row.appendChild(actionCell);
+
+        tbody.appendChild(row);
+    });
+}
+
+
+
 
 
 //השמה של שחקן  בקבוצה בפוזיציה המתאימה לו
@@ -112,3 +127,92 @@ async function searchPlayers  (newSearch : players): Promise<players[]>{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function displayTable(listOfPlayers:players[]): Promise<void> {
+//         const tbody = document.getElementById('tbody') as HTMLTableElement;
+//          tbody.innerHTML = '';
+//         listOfPlayers.forEach((player, index) => {
+//             const row = document.createElement('tr');
+            
+//             row.innerHTML = `
+//                 <td>${player.playerName}</td>
+//                 <td>${player.position}</td>
+//                 <td>${player.points}</td>
+//                 <td>${player.twoPercent}</td>
+//                 <td>${player.threePercent}</td>
+
+//                 <td class="actions">
+//                     <button onclick="addPlayer(${index})">add ${player.playerName} to Current Team</button>
+//                 </td>
+//             `;
+//             tbody.appendChild(row);
+//         });
+//     }
+    
