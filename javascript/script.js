@@ -20,11 +20,11 @@ document.getElementById("points").addEventListener("input", (event) => {
 });
 document.getElementById("twoPercent").addEventListener("input", (event) => {
     const value = event.target.value;
-    document.getElementById("labelTwo").textContent = value;
+    document.getElementById("labelTwo").textContent = `${value}% `;
 });
 document.getElementById("threePercent").addEventListener("input", (event) => {
     const value = event.target.value;
-    document.getElementById("labelThree").textContent = value;
+    document.getElementById("labelThree").textContent = `${value}% `;
 });
 //כפתור החיפוש
 form.addEventListener("submit", (event) => __awaiter(void 0, void 0, void 0, function* () {
@@ -60,20 +60,22 @@ function displayTable(listOfPlayers) {
         });
     });
 }
+//השמה של שחקן  בקבוצה בפוזיציה המתאימה לו
 function addPlayer(index) {
     let newPlayer = listOfPlayers[index];
     let position = newPlayer.position;
     let relevantDiv = document.getElementById(position);
     if (relevantDiv == null) {
-        alert("no player in this position");
+        return;
     }
     else {
         relevantDiv.innerHTML = `
-    <p> ${newPlayer.playerName} </p>
     <p> ${newPlayer.position} </p>
-    <p> ${newPlayer.points} </p>
-    <p> ${newPlayer.twoPercent} </p>
-    <p> ${newPlayer.threePercent} </p> 
+    <p> ${newPlayer.playerName} </p>
+    <p>threePercent: ${newPlayer.threePercent}%</p> 
+    <p>twoPercent: ${newPlayer.twoPercent}% </p>
+    <p>points: ${newPlayer.points} </p>
+
     `;
     }
 }

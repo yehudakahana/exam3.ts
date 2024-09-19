@@ -15,20 +15,21 @@ interface players {
 
 }
 
+
 //תצוגת המספר הנבחר באינפוטים
 document.getElementById("points")!.addEventListener("input", (event) => {
     const value = (event.target as HTMLInputElement).value;
-    (document.getElementById("labelPoints") as HTMLInputElement).textContent = value;
+    (document.getElementById("labelPoints") as HTMLInputElement).textContent = value ;
 })
 
 document.getElementById("twoPercent")!.addEventListener("input", (event) => {
     const value = (event.target as HTMLInputElement).value;
-    (document.getElementById("labelTwo") as HTMLInputElement).textContent = value;
+    (document.getElementById("labelTwo") as HTMLInputElement).textContent = `${value}% `;
 });
 
 document.getElementById("threePercent")!.addEventListener("input", (event) => {
     const value = (event.target as HTMLInputElement).value;
-    (document.getElementById("labelThree") as HTMLInputElement).textContent = value;
+    (document.getElementById("labelThree") as HTMLInputElement).textContent = `${value}% `;
 
 });
 
@@ -45,9 +46,6 @@ document.getElementById("threePercent")!.addEventListener("input", (event) => {
     listOfPlayers = await searchPlayers(newSearch);
     displayTable(listOfPlayers);
 })
-
-
-
 
 
 //תצוגה לטבלה
@@ -68,26 +66,29 @@ async function displayTable(listOfPlayers:players[]): Promise<void> {
                     <button onclick="addPlayer(${index})">add ${player.playerName} to Current Team</button>
                 </td>
             `;
-    
             tbody.appendChild(row);
         });
     }
     
+
+
+//השמה של שחקן  בקבוצה בפוזיציה המתאימה לו
 function addPlayer(index: number) {
     let newPlayer : players = listOfPlayers[index];
     let position : string = newPlayer.position;
     let relevantDiv = document.getElementById(position);
     if(relevantDiv == null){
-        alert("no player in this position")
+        return
     }
 
     else{
     relevantDiv.innerHTML = `
-    <p> ${newPlayer.playerName} </p>
     <p> ${newPlayer.position} </p>
-    <p> ${newPlayer.points} </p>
-    <p> ${newPlayer.twoPercent} </p>
-    <p> ${newPlayer.threePercent} </p> 
+    <p> ${newPlayer.playerName} </p>
+    <p>threePercent: ${newPlayer.threePercent}%</p> 
+    <p>twoPercent: ${newPlayer.twoPercent}% </p>
+    <p>points: ${newPlayer.points} </p>
+
     `
     }
 }
